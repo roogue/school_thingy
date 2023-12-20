@@ -4,8 +4,6 @@
 int main()
 {
     int matrixA[2][2] = {{1, 2}, {3, 4}};
-    int **matrixB;
-    int **multipliedMatrix;
 
     // Since matrix A is fixed, we can directly print it.
     printf("1st Matrix: \n");
@@ -19,16 +17,7 @@ int main()
         scanf("%d %d", &rows, &cols);
     } while (rows != matrixA[0][1]); // matrix B's row numbers must be same as matrix A's column numbers to perform multiplication
 
-    // allocate the size of rows of matrix B and multipliedMatrix
-    matrixB = (int **)malloc((rows * sizeof(int)));
-    multipliedMatrix = (int **)malloc((2 * sizeof(int)));
-    // for each rows, allocate the size of columns of matrix B and multipliedMatrix
-    for (int i = 0; i < rows; i++)
-    {
-        matrixB[i] = (int *)malloc(cols * sizeof(int));
-        multipliedMatrix[i] = (int *)malloc(cols * sizeof(int));
-    }
-
+    int matrixB[rows][cols];
     // prompt user to input every elements in matrix B
     printf("Input elements in the second matrix: \n");
     for (int i = 0; i < rows; i++)
@@ -40,12 +29,13 @@ int main()
         }
     }
 
+    int multipliedMatrix[rows][cols];
     // calculate the multiplication of the matrices
     for (int i = 0; i < 2; i++) // for every rows of matrix A
     {
         for (int j = 0; j < cols; j++) // for every cols of matrix B
         {
-            multipliedMatrix[i][j] = 0; // set the value to 0 first to avoid garbage value 
+            multipliedMatrix[i][j] = 0;    // set the value to 0 first to avoid garbage value
             for (int k = 0; k < rows; k++) // for every rows of matrix B
             {
                 multipliedMatrix[i][j] += matrixA[i][k] * matrixB[k][j];
