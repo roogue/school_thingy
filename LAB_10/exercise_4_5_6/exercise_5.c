@@ -20,7 +20,5 @@ int main()
         printf("Student No.%d >>> ITP: %d \t DM: %d \t SAD: %d\n", students[i].num, students[i].ITP, students[i].DM, students[i].SAD);
     }
 
-    printf("Data saved");
-
     return 0;
 }
